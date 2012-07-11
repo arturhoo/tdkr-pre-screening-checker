@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from subprocess import check_output, call
 from os import remove
+from sys import exit
 
 try:
     from email_to_send import *
 except ImportError:
-    sys.exit("No receiver found!")
+    exit("No receiver found!")
 
 
 def build_msg(sender_address, receiver_address):
