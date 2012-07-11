@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from subprocess import check_output, call
-from os import remove
+from os import remove, path
 from sys import exit
 
 try:
@@ -17,6 +17,7 @@ def build_msg(sender_address, receiver_address):
     msg.write('\n\nGo buy it now!')
 
 if __name__ == '__main__':
+    script_path = path.realpath(__file__).split(__file__)[0]
     # Execute casperjs
     output = check_output(['casperjs', 'checker.js'])
 
