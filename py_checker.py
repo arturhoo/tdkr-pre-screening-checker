@@ -29,6 +29,6 @@ if __name__ == '__main__':
     default_next_session_text = open('default_next_session_text.txt',
                                      'r').read()
     if dates_len != '8' or default_next_session_text != next_session_text:
-        build_msg()
+        build_msg(SENDER, RECEIVER)
         call(['ssmtp', RECEIVER, '<', 'msg.txt'])
         remove('msg.txt')
