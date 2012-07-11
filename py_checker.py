@@ -19,7 +19,7 @@ def build_msg(sender_address, receiver_address):
 if __name__ == '__main__':
     script_path = path.realpath(__file__).split(__file__)[0]
     # Execute casperjs
-    output = check_output(['casperjs', 'checker.js'])
+    output = check_output(['casperjs', script_path + 'checker.js'])
 
     # Get the first line from casper's output, indicates
     # the number of dates available on the website
