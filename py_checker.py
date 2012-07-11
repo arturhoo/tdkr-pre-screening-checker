@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from subprocess import check_output, call
-from os import remove, path
-from sys import exit, path as sys_path
+from os import remove
+from sys import exit
 
 try:
     from email_to_send import *
