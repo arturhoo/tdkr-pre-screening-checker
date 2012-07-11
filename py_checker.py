@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from subprocess import check_output, call
 from os import remove, path
-from sys import exit
+from sys import exit, path as sys_path
 
 try:
     from email_to_send import *
@@ -17,9 +17,8 @@ def build_msg(sender_address, receiver_address):
     msg.write('\n\nGo buy it now!')
 
 if __name__ == '__main__':
-    script_path = path.realpath(__file__).split(__file__)[0]
     # Execute casperjs
-    output = check_output(['casperjs', script_path + 'checker.js'])
+    output = check_output(['casperjs', 'checker.js'])
 
     # Get the first line from casper's output, indicates
     # the number of dates available on the website
@@ -31,5 +30,5 @@ if __name__ == '__main__':
                                      'r').read()
     if dates_len != '8' or default_next_session_text != next_session_text:
         build_msg(SENDER, RECEIVER)
-        call('ssmtp ' + RECEIVER + '< msg.txt', shell=True)
+        call('ssmtp ' + RECEIVER + ' < msg.txt', shell=True)
         remove('msg.txt')
